@@ -1,0 +1,23 @@
+# cat docker-compose.yml
+version: '3.3'
+services:
+  mysql:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - localnet      
+  webserver:
+    build:
+      context: /home/usman/Desktop/usman/webserver
+    ports:
+      - "8095:8080"
+    networks:
+      - localnet
+    tty: true
+
+networks:
+  localnet:
+    name: custome_network 
